@@ -11,7 +11,7 @@
         <h1>Create an Outlaw</h1>
     </header>
     <main>
-        <form action="/characters" method="POST">
+        <form action="/skills/<%=character._id%>?_method=PUT" method="POST">
             <div class="formQ">
                 <label for="name">Character Name</label>
                 <input type="text" id="name" name="name" />
@@ -70,6 +70,10 @@
             <div class="formQ">
                 <label for="quirks">Quirks</label>
                 <input type="text" id="quirks" name="quirks" />
+            </div>
+            <div class="formQ">
+                <label for="image">Image</label>
+                <input type="text" id="image" name="image" />
             </div>
             <input type="submit" value="Create Character" />
         </form>

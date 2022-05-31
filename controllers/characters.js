@@ -41,6 +41,7 @@ router.delete('/:id', (req, res) => {
 });
 
 // Update
+// -- update character whole doc
 router.put('/:id', (req, res) => {
     console.log(req.body);
     Character.findByIdAndUpdate(req.params.id, req.body, () => {
@@ -48,6 +49,19 @@ router.put('/:id', (req, res) => {
         // res.redirect(`/characters/:id`);
     });
 });
+
+// -- update characters individual skills
+router.patch('/:id', (req, res) => {
+    let newSkill = {
+        skillName: req.body.skillName,
+        skillPerc: Number(req.body.skillPerc)
+    };
+    Character.findById(req.params.id, (err, foundCharacter) => {
+        foundCharacter.iSkills.push(newSkill)
+        foundCharacter.save();
+        res.redirect(`/characters/${foundCharacter._id}/new-skill`)
+    })
+})
 // Create
 router.post('/', (req, res) => {
     if (req.body.influence === 'on') {
@@ -61,12 +75,22 @@ router.post('/', (req, res) => {
 });
 
 // Edit
+// -- edit character
 router.get('/:id/edit', (req, res) => {
     Character.findById(req.params.id, (err, foundCharacter) => {
         res.render('characters/editChar.ejs', {
             character: foundCharacter
         });
     });
+});
+
+// -- add new skill
+router.get('/:id/new-skill', (req, res) => {
+    Character.findById(req.params.id, (err, foundCharacter) => {
+        res.render('characters/addskill.ejs', {
+            character: foundCharacter
+        });
+    })
 });
 
 // Show

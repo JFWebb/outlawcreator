@@ -5,27 +5,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dusk City Outlaw Creator</title>
+    <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
-    <h1>Main Dashboard</h1> 
-    <a href="/characters/new-character">Create a new Character</a>
-    <nav id="charNav">
-        <ul>
-            <% for(let i = 0; i < characters.length; i++) { %>
-                <li>
-                    <a href="/characters/<%= characters[i]._id %>"><%= characters[i].name %></a>
-                </li>
-            <% } %>
-        </ul>
-    </nav>
-    <h3><%= character.name %></h3>
-    <section>
-        <a href="/characters/<%= character._id%>/edit">Edit Character</a>
-    </section>
-    <section>
-        <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete Character" />
-        </form>
-    </section>
+    <div class="parent">
+        <div class="basics">
+            <section>
+                <img src="<%= character.image %>" alt="Image of <%= character.name %>" id="face">
+                <h3><%= character.name %></h3>
+                <h4><%= character.speciality %> | <%= character.cartel %></h4>
+                <p><%= character.description %></p>
+            </section>
+            <section>
+                <a href="/characters/<%= character._id%>/edit">Edit Character</a>
+                <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete Character" />
+                </form>
+            </section>
+        </div>
+        <div class="expertise">
+            <section id="luckinfluence">
+                <h3>Luck: <%= character.luck %> points</h3>
+                <% if (character.influence === true) { %>
+                    <h3>Influence Available</h3>
+                <% } else { %>
+                    <h3>Influence Exhausted</h3>
+                <% } %>
+            </section>
+            <section>
+                <h3>Quirks</h3>
+                <ul>
+                    <% for(let i = 0; i < character.quirks.length; i++) { %>
+                        <li>
+                            <%= character.quirks[i] %></a>
+                        </li>
+                    <% } %>
+                </ul>
+            </section>
+            <section>
+                <h3>Cartel's Knowledge</h3>
+                <ul>
+                    <li>Will be hard coded in someway</p>
+                </ul>
+            </section>
+            <section>
+                <h3>Individual's Knowledge</h3>
+                <ul>
+                    <% for(let i = 0; i < character.iKnowledge.length; i++) { %>
+                        <li>
+                            <%= character.iKnowledge[i] %></a>
+                        </li>
+                    <% } %>
+                </ul>
+            </section>
+            <section>
+                <h3>Speciality's Skills</h3>
+                <ul>
+                    <li>Will be hard coded in someway</p>
+                </ul>
+            </section>
+            <section>
+                <h3>Individual's Skills</h3>
+                <ul>
+                    <% for(let i = 0; i < character.iKnowledge.length; i++) { %>
+                        <li>
+                            <%= character.iKnowledge[i] %></a>
+                        </li>
+                    <% } %>
+                </ul>
+            </section>
+        </div>
+        <div class="dashnav">
+            <section>
+                <a href="/characters/new-character">Create a new Character</a>
+            </section>
+            <section>
+                <nav id="charNav">
+                    <ul>
+                        <% for(let i = 0; i < characters.length; i++) { %>
+                            <li>
+                                <a href="/characters/<%= characters[i]._id %>"><%= characters[i].name %></a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </div>
 </body>
 </html>

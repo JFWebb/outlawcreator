@@ -38,7 +38,7 @@ app.use(express.static('public'));
 
 // -- routers
 app.use('/characters', charController)
-
+// app.use('/skills', skillController)
 // =================================================
 // MOUNT ROUTES
 // =================================================

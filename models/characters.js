@@ -30,9 +30,10 @@ const charSchema = new Schema ({
     // cKnowledge: {type: [String], required: false},
     iKnowledge: {type: [String], required: false},
     // sSkills: sSkillsSchema,
-    iSkills: iSkillsSchema,
+    iSkills: [iSkillsSchema],
     influence: {type: Boolean, default: true},
     luck: {type: Number, default: 100},
+    image: {type: String, default:"https://i.imgur.com/eiJ2eClm.png"},
 });
 
 // =================================================
