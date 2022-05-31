@@ -19,5 +19,13 @@
         </ul>
     </nav>
     <h3><%= character.name %></h3>
+    <section>
+        <a href="/characters/<%= character._id%>/edit">Edit Character</a>
+    </section>
+    <section>
+        <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete Character" />
+        </form>
+    </section>
 </body>
 </html>

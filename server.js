@@ -33,8 +33,8 @@ const PORT = process.env.PORT || 3000;
 // -- packages
 // ---- encodes new data to req.body ; extented: true for nested objects
 app.use(express.urlencoded({extended: true}));
-// app.use(methodOverride("_method"));
-// app.use(express.static('public'));
+app.use(methodOverride("_method"));
+app.use(express.static('public'));
 
 // -- routers
 app.use('/characters', charController)
