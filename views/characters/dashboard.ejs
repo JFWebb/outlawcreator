@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dusk City Outlaw Creator</title>
+</head>
+<body>
+    <h1>Main Dashboard</h1> 
+    <a href="/characters/new-character">Create a new Character</a>
+    <nav id="charNav">
+        <ul>
+            <% for(let i = 0; i < characters.length; i++) { %>
+                <li>
+                    <a href="/characters/<%= characters[i]._id %>"><%= characters[i].name %></a>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+    <h3><%= character.name %></h3>
+</body>
+</html>

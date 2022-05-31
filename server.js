@@ -2,16 +2,29 @@
 // DEPENDCIES & DATA VARIABLES
 // =================================================
 // -- packages
+require('dotenv').config();
 const express = require('express');
 const methodOverride = require('method-override');
 const app = express();
+const mongoose = require('mongoose');
+
 
 // -- routers
 const charController = require('./controllers/characters.js');
 
 // -- databases
+// ---- character database
+mongoose.connect(process.env.CHARACTER_DB, {
+    useUnifiedTopology: true,
+});
 
-// -- env vars
+// ---- database connection error / success
+const db = mongoose.connection;
+db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
+db.on('connected', () => console.log('mongo connected'));
+db.on('disconnected', () => console.log('mongo disconnected'));
+
+// -- port vars
 const PORT = process.env.PORT || 3000;
 
 // =================================================
@@ -19,7 +32,7 @@ const PORT = process.env.PORT || 3000;
 // =================================================
 // -- packages
 // ---- encodes new data to req.body ; extented: true for nested objects
-// app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 // app.use(methodOverride("_method"));
 // app.use(express.static('public'));
 
