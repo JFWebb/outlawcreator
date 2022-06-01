@@ -12,7 +12,7 @@
         <div class="basics">
             <section>
                 <img src="<%= character.image %>" alt="Image of <%= character.name %>" id="face">
-                <h3><%= character.name %></h3>
+                <h3 class="dashheader"><%= character.name %></h3>
                 <h4><%= character.speciality %> | <%= character.cartel %></h4>
                 <p><%= character.description %></p>
             </section>
@@ -25,7 +25,7 @@
         </div>
         <div class="expertise">
             <section id="luckinfluence">
-                <h3>Luck: <%= character.luck %> points</h3>
+                <h3 class="dashheader">Luck: <%= character.luck %> points</h3>
                 <% if (character.influence === true) { %>
                     <h3>Influence Available</h3>
                 <% } else { %>
@@ -33,7 +33,7 @@
                 <% } %>
             </section>
             <section>
-                <h3>Quirks</h3>
+                <h3 class="dashheader">Quirks</h3>
                 <ul>
                     <% for(let i = 0; i < character.quirks.length; i++) { %>
                         <li>
@@ -43,13 +43,13 @@
                 </ul>
             </section>
             <section>
-                <h3>Cartel's Knowledge</h3>
+                <h3  class="dashheader">Cartel's Knowledge</h3>
                 <ul>
                     <li>Will be hard coded in someway</p>
                 </ul>
             </section>
             <section>
-                <h3>Individual's Knowledge</h3>
+                <h3  class="dashheader">Individual's Knowledge</h3>
                 <ul>
                     <% for(let i = 0; i < character.iKnowledge.length; i++) { %>
                         <li>
@@ -59,13 +59,13 @@
                 </ul>
             </section>
             <section>
-                <h3>Speciality's Skills</h3>
+                <h3  class="dashheader">Speciality's Skills</h3>
                 <ul>
                     <li>Will be hard coded in someway</p>
                 </ul>
             </section>
             <section>
-                <h3>Individual's Skills</h3>
+                <h3  class="dashheader">Individual's Skills</h3>
                 <ul>
                     <% for(let i = 0; i < character.iKnowledge.length; i++) { %>
                         <li>

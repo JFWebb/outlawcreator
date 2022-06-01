@@ -26,6 +26,7 @@ router.get('/', (req, res) => {
     Character.findOne({}, (err, foundCharacter) => {
         res.redirect(`/characters/${foundCharacter._id}`);
     });
+
 });
 
 // New
@@ -42,27 +43,41 @@ router.delete('/:id', (req, res) => {
 
 // Update
 // -- update character whole doc
-router.put('/:id', (req, res) => {
-    console.log(req.body);
-    Character.findByIdAndUpdate(req.params.id, req.body, () => {
-        // let id = req.params.id;
-        // res.redirect(`/characters/:id`);
+router.patch('/:id', (req, res) => {
+    Character.findById(req.params.id, (err, foundCharacter) => {
+        if (req.body.influence === 'on') {
+            req.body.influence = true;
+        } else {
+            req.body.influence = false;
+        };
+        foundCharacter.name = req.body.name
+        foundCharacter.cartel = req.body.cartel
+        foundCharacter.speciality = req.body.speciality
+        foundCharacter.description = req.body.description
+        foundCharacter.quirks = req.body.quirks
+        foundCharacter.image = req.body.image
+        foundCharacter.influence = req.body.influence
+        foundCharacter.luck = req.body.luck
+        foundCharacter.save();
+        res.redirect(`/characters/${req.params.id}`);
     });
 });
 
 // -- update characters individual skills
-router.patch('/:id', (req, res) => {
-    let newSkill = {
-        skillName: req.body.skillName,
-        skillPerc: Number(req.body.skillPerc)
-    };
-    Character.findById(req.params.id, (err, foundCharacter) => {
-        foundCharacter.iSkills.push(newSkill)
-        foundCharacter.save();
-        res.redirect(`/characters/${foundCharacter._id}/new-skill`)
-    })
-})
+// router.patch('/:id', (req, res) => {
+//     let newSkill = {
+//         skillName: req.body.skillName,
+//         skillPerc: Number(req.body.skillPerc)
+//     };
+//     Character.findById(req.params.id, (err, foundCharacter) => {
+//         foundCharacter.iSkills.push(newSkill)
+//         foundCharacter.save();
+//         res.redirect(`/characters/${foundCharacter._id}/new-skill`)
+//     })
+// });
+
 // Create
+// -- Create New Char
 router.post('/', (req, res) => {
     if (req.body.influence === 'on') {
         req.body.influence = true;
@@ -73,6 +88,8 @@ router.post('/', (req, res) => {
         res.redirect(`/characters/${createdCharacter._id}`);
     });
 });
+
+// -- Create New Skill
 
 // Edit
 // -- edit character
@@ -85,13 +102,13 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // -- add new skill
-router.get('/:id/new-skill', (req, res) => {
-    Character.findById(req.params.id, (err, foundCharacter) => {
-        res.render('characters/addskill.ejs', {
-            character: foundCharacter
-        });
-    })
-});
+// router.get('/:id/new-skill', (req, res) => {
+//     Character.findById(req.params.id, (err, foundCharacter) => {
+//         res.render('characters/addskill.ejs', {
+//             character: foundCharacter
+//         });
+//     })
+// });
 
 // Show
 router.get('/:_id', (req, res) => {
@@ -99,7 +116,8 @@ router.get('/:_id', (req, res) => {
         Character.find({}, (err, foundCharacters) => {
             res.render('../views/characters/dashboard.ejs', {
                 characters: foundCharacters,
-                character: foundCharacter
+                character: foundCharacter,
+                user: req.user
             });
         });
     });

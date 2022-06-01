@@ -7,10 +7,12 @@ const express = require('express');
 const methodOverride = require('method-override');
 const app = express();
 const mongoose = require('mongoose');
-
+const session = require('express-session');
+const passport = require('passport');
 
 // -- routers
 const charController = require('./controllers/characters.js');
+const indexRoutes = require('./routes/index.js');
 
 // -- databases
 // ---- character database
@@ -24,6 +26,9 @@ db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
 db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
+// -- passport
+require('./config/passport');
+
 // -- port vars
 const PORT = process.env.PORT || 3000;
 
@@ -35,24 +40,19 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 app.use(express.static('public'));
+app.use(session({
+    secret: 'Perelandro',
+    resave: false,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // -- routers
 app.use('/characters', charController)
+app.use('/', indexRoutes);
 // app.use('/skills', skillController)
-// =================================================
-// MOUNT ROUTES
-// =================================================
-// Index
-// -- Home Page
-app.get('/', (req, res) => {
-    res.render('index.ejs');
-})
-// New
-// Destroy
-// Update
-// Create
-// Edit
-// Show
+
 
 // =================================================
 // Port Listening?
