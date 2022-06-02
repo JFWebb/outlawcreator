@@ -10,7 +10,6 @@ const app = express();
 // -- models
 const Character = require('../models/characters.js');
 
-
 // =================================================
 // MOUNT MIDDLEWARE
 // =================================================
@@ -35,11 +34,19 @@ router.get('/new-character', (req, res) => {
 });
 
 // Destroy
+// -- delete character
 router.delete('/:id', (req, res) => {
     Character.findByIdAndDelete(req.params.id, () => {
         res.redirect('/characters/');
     });
 });
+
+// // -- delete skill
+// router.delete('/:charid/:skillid', (req, res) => {
+//     Skill.findByIdAndDelete(req.params.skillid, () => {
+//         res.redirect(`/characters/${req.params.charid}`)
+//     })
+// })
 
 // Update
 // -- update character whole doc
@@ -55,6 +62,7 @@ router.patch('/:id', (req, res) => {
         foundCharacter.speciality = req.body.speciality
         foundCharacter.description = req.body.description
         foundCharacter.quirks = req.body.quirks
+        foundCharacter.iknowledge = req.body.iknowledge
         foundCharacter.image = req.body.image
         foundCharacter.influence = req.body.influence
         foundCharacter.luck = req.body.luck
@@ -63,18 +71,28 @@ router.patch('/:id', (req, res) => {
     });
 });
 
-// -- update characters individual skills
-// router.patch('/:id', (req, res) => {
-//     let newSkill = {
-//         skillName: req.body.skillName,
-//         skillPerc: Number(req.body.skillPerc)
-//     };
-//     Character.findById(req.params.id, (err, foundCharacter) => {
-//         foundCharacter.iSkills.push(newSkill)
-//         foundCharacter.save();
-//         res.redirect(`/characters/${foundCharacter._id}/new-skill`)
-//     })
-// });
+//-- update characters individual skills
+router.patch('/addskill/:id', (req, res) => {
+    let newSkill = {
+        skillName: req.body.skillName,
+        skillPerc: Number(req.body.skillPerc)
+    };
+    Character.findById(req.params.id, (err, foundCharacter) => {
+        foundCharacter.iSkills.push(newSkill)
+        foundCharacter.save();
+        res.redirect(`/characters/${foundCharacter._id}`)
+    })
+});
+
+//-- delete skill
+router.patch('/:charID/:skillID', (req, res) => {
+    Character.findById(req.params.charID, (err, foundCharacter) => {
+        
+        foundCharacter.iSkills.pull(req.params.skillID)
+        foundCharacter.save();
+        res.redirect(`/characters/${foundCharacter._id}`)
+    })
+});
 
 // Create
 // -- Create New Char
@@ -102,7 +120,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // -- add new skill
-// router.get('/:id/new-skill', (req, res) => {
+// router.get('/characters/<%= character._id %>/addskill', (req, res) => {
 //     Character.findById(req.params.id, (err, foundCharacter) => {
 //         res.render('characters/addskill.ejs', {
 //             character: foundCharacter

@@ -5,92 +5,101 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dusk City Outlaw Creator</title>
+    <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
     <body>
-        <header>
-            <h1>Edit Outlaw</h1>
-        </header>
-        <main>
-            <form action="/characters/<%=character._id%>?_method=PATCH" method="POST">
-                <div class="formQ">
-                    <label for="name">Character Name</label>
-                    <input type="text" id="name" name="name" value="<%=character.name%>"/>
-                </div>
-                <div class="formQ">
-                    <label for="cartel">Cartel</label>
-                    <select id="cartel" name="cartel" value="<%=character.cartel%>">
-                        <option value="Circle">The Circle</option>
-                        <option value="Family">The Family</option>
-                        <option value="Forgotten">The Forgotten</option>
-                        <option value="Gravediggers">The Gravdiggers</option>
-                        <option value="Mummers">The Mummers</option>
-                        <option value="Red Lotus Society">Red Lotus Society</option>
-                        <option value="Vespers">The Vespers</option>
-                        <option value="Wardens of the Night">Wardens of the Night</option>
-                        <option value="Church">The Church</option>
-                        <option value="Hanged">The Hanged</option>
-                        <option value="Independent">Independent</option> 
-                    </select>
-                </div>
-                <div class="formQ">
-                    <label for="speciality">Speciality</label>
-                    <select id="speciality" name="speciality" value="<%=character.speciality%>">
-                        <option value="Alchemist">Alchemist</option>
-                        <option value="Assassin">Assassin</option>
-                        <option value="Basher">Basher</option>
-                        <option value="Boss">Boss</option>
-                        <option value="Brawler">Brawler</option>
-                        <option value="Cleaner">Cleaner</option>
-                        <option value="Dabbler">Dabbler</option>
-                        <option value="Fixer">Fixer</option>
-                        <option value="Grifter">Grifter</option>
-                        <option value="Mastermind">Mastermind</option>
-                        <option value="Mole">Mole</option>
-                        <option value="Poisoner">Poisoner</option>
-                        <option value="Runner">Runner</option>
-                        <option value="Sharpshooter">Sharpshooter</option>
-                        <option value="Theif">Theif</option>
-                        <option value="Trainer">Trainer</option>
-                        <option value="Beguiler">Beguiler: Mummer's Rare Character</option>
-                        <option value="Dragon">Dragon: Red Lotus' Rare Character</option>
-                        <option value="Fortune Teller">Fortune Teller: The Forgotten's Rare Character</option>
-                        <option value="Hexer">Hexer: The Family's Rare Character</option>
-                        <option value="Magus">Magus: The Circle's Rare Character</option>
-                        <option value="Masquerader">Masquerader: Vesper's Rare Character</option>
-                        <option value="Pallbearer">Pallbearer: Gravedigger's Rare Character</option>
-                        <option value="Wyr">Wyr: The Warden's Rare Character</option>
-                        <option value="Specter">Specter: The Church's Rare Character</option>
-                        <option value="Traveler">Traveler: The Hanged's Rare Character</option>
-                    </select>
-                </div>
-                <div class="formQ">
-                    <label for="description">So...whats your deal?</label>
-                    <textarea id="description" name="description"><%=character.description%></textarea>
-                </div>
-                <div class="formQ">
-                    <label for="quirks">Quirks</label>
-                    <input type="text" id="quirks" name="quirks" value="<%=character.quirks%>"/>
-                </div>
-                <div class="formQ">
-                    <label for="image">Image</label>
-                    <input type="text" id="image" name="image" value="<%=character.image%>"/>
-                </div>
-                <div class="formQ">
-                    <label for="influence">Influence</label>
-                    <% if (character.influence === true) { %>
-                        <input type="checkbox" id="influence" name="influence" checked/>
-                    <% } else { %>
-                        <input type="checkbox" id="influence" name="influence"/>
-                    <% } %>
-                </div>
-                <div class="formQ">
-                    <label for="luck">Luck</label>
-                    <input type="number" id="luck" name="luck" value="<%=character.luck%>"/>
-                </div>
-                <input type="submit" value="Edit Character" />
-            </form>
-        </main>
+        <div id="formbody">
+            <header>
+                <h1>Edit Outlaw</h1>
+            </header>
+            <main>
+                <form action="/characters/<%=character._id%>?_method=PATCH" method="POST">
+                    <div class="formQ">
+                        <label for="name">Character Name</label>
+                        <input type="text" id="name" name="name" value="<%=character.name%>"/>
+                    </div>
+                    <div class="formQ">
+                        <label for="cartel">Cartel</label>
+                        <select id="cartel" name="cartel">
+                            <option value="<%=character.cartel%>" selected>The <%=character.cartel%></option>
+                            <option value="Circle">The Circle</option>
+                            <option value="Family">The Family</option>
+                            <option value="Forgotten">The Forgotten</option>
+                            <option value="Gravediggers">The Gravdiggers</option>
+                            <option value="Mummers">The Mummers</option>
+                            <option value="Red Lotus Society">Red Lotus Society</option>
+                            <option value="Vespers">The Vespers</option>
+                            <option value="Wardens of the Night">Wardens of the Night</option>
+                            <option value="Church">The Church</option>
+                            <option value="Hanged">The Hanged</option>
+                            <option value="Independent">Independent</option> 
+                        </select>
+                    </div>
+                    <div class="formQ">
+                        <label for="speciality">Speciality</label>
+                        <select id="speciality" name="speciality" value="<%=character.speciality%>">
+                            <option value="<%=character.speciality%>" selected><%=character.speciality%></option>
+                            <option value="Alchemist">Alchemist</option>
+                            <option value="Assassin">Assassin</option>
+                            <option value="Basher">Basher</option>
+                            <option value="Boss">Boss</option>
+                            <option value="Brawler">Brawler</option>
+                            <option value="Cleaner">Cleaner</option>
+                            <option value="Dabbler">Dabbler</option>
+                            <option value="Fixer">Fixer</option>
+                            <option value="Grifter">Grifter</option>
+                            <option value="Mastermind">Mastermind</option>
+                            <option value="Mole">Mole</option>
+                            <option value="Poisoner">Poisoner</option>
+                            <option value="Runner">Runner</option>
+                            <option value="Sharpshooter">Sharpshooter</option>
+                            <option value="Theif">Theif</option>
+                            <option value="Trainer">Trainer</option>
+                            <option value="Beguiler">Beguiler: Mummer's Rare Character</option>
+                            <option value="Dragon">Dragon: Red Lotus' Rare Character</option>
+                            <option value="Fortune Teller">Fortune Teller: The Forgotten's Rare Character</option>
+                            <option value="Hexer">Hexer: The Family's Rare Character</option>
+                            <option value="Magus">Magus: The Circle's Rare Character</option>
+                            <option value="Masquerader">Masquerader: Vesper's Rare Character</option>
+                            <option value="Pallbearer">Pallbearer: Gravedigger's Rare Character</option>
+                            <option value="Wyr">Wyr: The Warden's Rare Character</option>
+                            <option value="Specter">Specter: The Church's Rare Character</option>
+                            <option value="Traveler">Traveler: The Hanged's Rare Character</option>
+                        </select>
+                    </div>
+                    <div class="formQ">
+                        <label for="description">So...whats your deal?</label>
+                        <textarea id="description" name="description"><%=character.description%></textarea>
+                    </div>
+                    <div class="formQ">
+                        <label for="quirks">Quirks</label>
+                        <input type="text" id="quirks" name="quirks" value="<%=character.quirks%>"/>
+                    </div>
+                    <div class="formQ">
+                        <label for="iKnowledge">Personal Knowledge</label>
+                        <input type="text" id="iKnowledge" name="iKnowledge" value="<%=character.iKnowledge%>"/>
+                    </div>
+                    <div class="formQ">
+                        <label for="image">Image</label>
+                        <input type="text" id="image" name="image" value="<%=character.image%>"/>
+                    </div>
+                    <div class="formQ">
+                        <label for="influence">Influence</label>
+                        <% if (character.influence === true) { %>
+                            <input type="checkbox" id="influence" name="influence" checked/>
+                        <% } else { %>
+                            <input type="checkbox" id="influence" name="influence"/>
+                        <% } %>
+                    </div>
+                    <div class="formQ">
+                        <label for="luck">Luck</label>
+                        <input type="number" id="luck" name="luck" value="<%=character.luck%>"/>
+                    </div>
+                    <input type="submit" value="Edit Character" id="submitedits"/>
+                </form>
+            </main>
+        </div>
     </body>
 </body>
 </html>

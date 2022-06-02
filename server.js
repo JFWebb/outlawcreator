@@ -51,7 +51,7 @@ app.use(passport.session());
 // -- routers
 app.use('/characters', charController)
 app.use('/', indexRoutes);
-// app.use('/skills', skillController)
+
 
 
 // =================================================

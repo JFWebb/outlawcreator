@@ -28,7 +28,7 @@ const charSchema = new Schema ({
     description: {type: String, required: false},
     quirks: {type: [String], required: false},
     // cKnowledge: {type: [String], required: false},
-    iKnowledge: {type: [String], required: false},
+    iKnowledge: {type: String, required: false},
     // sSkills: sSkillsSchema,
     iSkills: [iSkillsSchema],
     influence: {type: Boolean, default: true},

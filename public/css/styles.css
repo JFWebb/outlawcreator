@@ -1,12 +1,14 @@
 /* Font Imports */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&family=Cinzel:wght@900&family=Open+Sans:wght@300&family=Poppins:wght@200;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&family=Cinzel:wght@900&family=Open+Sans:wght@400&family=Poppins:wght@200;400&display=swap');
+
 
 /* Color Pallet */
 :root {
     --black: #231f1f;
     --white: #f9f6f4;
     --blue: #00537b;
-    --red: #be1f2d;
+    /* --red: #be1f2d; */
+    --red: #ab1b28;
     --brown: #7c3f09;
 }
 
@@ -14,42 +16,282 @@
 
 html,
 body {
-    background-color: var(--white);
+    margin: 0;
+    height: 100%;
+    width: 100vw;
+    background: rgb(239,234,230);
+    background: linear-gradient(0deg, rgba(224,219,215,0.9) 0%, rgba(249,246,244,1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--black);
     font-family: 'Open Sans', sans-serif;
+    font-size: 0.95em;
 }
 
-.dashheader {
-    font-size: 1.5em;
-    font-family: 'Cinzel', serif;
-    color: var(--blue);
+#formbody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+#titlescreen{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.linkbutton {
+    margin: 1em;
+    padding: 0.5em;
+    width: 250px;
+    border-radius: 5px;
+    background-color: var(--red);
+    background: linear-gradient(350deg, rgba(153,23,34,1) 0%, rgba(171,27,40,1) 100%);
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.25em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: var(--white);
+    text-shadow: 0px 0px 10px rgba(76, 12, 18, 0.8);
+}
+
+.linkbutton:hover{
+    background: #8c0e03
+}
+
+input[type=submit]{
+    margin: 1em 0em;
+    padding: 0.5em;
+    width: 250px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: var(--red);
+    background: linear-gradient(350deg, rgba(153,23,34,1) 0%, rgba(171,27,40,1) 100%);
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.25em;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: var(--white);
+    text-shadow: 0px 0px 10px rgba(	76, 12, 18, 0.8);
+}
+
+input[type=submit]:hover {
+    background: #8c0e03;
+}
+
 
 /* Dashboard Parent */
 .parent {
+    height: 70%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    grid-column-gap: 20px;
+    grid-column-gap: 40px;
     grid-row-gap: 0px;
     padding: 2em;
-
 }
 
 /* Dashboard Children */
 .basics { 
     grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
 }
 .expertise {
     grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
 }
 .dashnav {
     grid-area: 1 / 3 / 2 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2em;
+    padding: 1em;
 }
 
+/* Nested Containers */
+#charinfo {
+    height: 80%;
+}
+
+#dasheditdelete{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#dasheditdelete > form{
+    margin: 0;
+    padding: 0;
+    width: 250px;
+}
+.expertisecontainer{
+    max-height: 270px;
+    overflow: scroll;
+}
+#skillsList{
+    margin: 0;
+    padding: 0;
+    list-style-type: disc;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    list-style-position: inside;
+}
+#skillsItem{
+    display: flex;
+    flex-direction: row;
+
+}
+
+#addskillform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-end;
+}
+
+#skillforminputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#charNav {
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 2em;
+    box-sizing: border-box;
+    background-color: rgba(35, 31, 31, 0.05);
+    border-radius: 5px;
+}
+
+#charNav > nav > ul {
+    font-size: 1.2em;
+}
+
+#charNav > nav > ul > li :hover{
+    color: #8c0e03;
+}
+
+#formbody>main>form{
+    display: flex;
+    flex-direction: column;
+}
+/* Lowest Level Elements */
+.dashheader, h1 {
+    padding: 0.25em 0em;
+    margin: 0;
+    font-size: 1.9em;
+    font-family: 'Cinzel', serif;
+    color: var(--blue);
+    text-shadow: 0px 0px 8px rgba(	0, 16, 24, 0.2);
+}
 
 #face{
+    display: block;
+    margin: auto;
     object-fit: cover;
-    width: 100%;
-    aspect-ratio: 1/1;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0px 0px 15px rgba(35, 31, 31, 0.4);
+}
+
+#titles {
+    margin: 0;
+}
+
+#description{
+    display: inline-block;
+    height: 35vh;
+    overflow: scroll;
+    font-style: italic;
+    clear: none;
+    background-color: rgba(35, 31, 31, 0.05);
+    border-radius: 5px;
+}
+
+#skillforminputs > div {
+    padding: 0.5em;
+}
+
+.formQ {
+    display: flex;
+    flex-direction: column;  
+}
+
+#submitedits, #submitcharacter{
+    align-self: center;
+    margin: 1em;
+}
+
+#delete{
+    margin: 0;
+    padding: 0em 0.5em;
+    width: auto;
+    background: none;
+    border: none;
+    color: var(--red);
+    font-size: 0.7em;
+}
+
+#title{
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 5em;
+    text-align: center;
+    background-image: linear-gradient(360deg, rgba(174,46,18,1) 0%, rgba(212,103,30,1) 42%, rgba(247,154,28,1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+#titlebutton {
+    background: var(--blue);
+    background: linear-gradient(350deg, rgba(36, 54, 99,1) 0%, rgba(0, 83, 123, 1) 100%);
+}
+
+@media (min-width: 320px) and (max-width: 1024px) {
+
+    .parent {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    }
+
+    .basics { 
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .expertise {
+        grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .dashnav {
+        grid-area: 3 / 1 / 4 / 2;
+    }
+   
 }
