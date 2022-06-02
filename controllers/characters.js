@@ -9,6 +9,7 @@ const app = express();
 
 // -- models
 const Character = require('../models/characters.js');
+const cKnowledge = require('../models/cartelKnowledge.js')
 
 // =================================================
 // MOUNT MIDDLEWARE
@@ -19,8 +20,8 @@ app.use(express.urlencoded({extended:true}));
 // MOUNT ROUTES
 // =================================================
 // Seed
-const characterSeed = require("../models/characterSeed.js");
-router.get("/seed", (req, res) => {
+const characterSeed = require('../models/characterSeed.js');
+router.get('/seed', (req, res) => {
     Character.create(characterSeed, (error, allProducts) => {
         Character.findOne({}, (err, foundCharacter) => {
             res.redirect(`/characters/${foundCharacter._id}`);
@@ -129,17 +130,32 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // Show
+// router.get('/:_id', (req, res) => {
+//     Character.findById(req.params._id, (err, foundCharacter) => {
+//         Character.find({}, (err, foundCharacters) => {
+//             cKnowledge.findOne({'cartel' : foundCharacter.cartel}, (err, foundCartel) => {
+//                 res.render('../views/characters/dashboard.ejs', {
+//                     characters: foundCharacters,
+//                     character: foundCharacter,
+//                     cartel: foundCartel,
+//                 });
+//             });
+//         });
+//     });
+// });
+
 router.get('/:_id', (req, res) => {
     Character.findById(req.params._id, (err, foundCharacter) => {
+        let cartel = cKnowledge.find (item => item.cartel == foundCharacter.cartel);
         Character.find({}, (err, foundCharacters) => {
             res.render('../views/characters/dashboard.ejs', {
                 characters: foundCharacters,
                 character: foundCharacter,
+                cartel: cartel,
             });
         });
     });
 });
-
 // =================================================
 // EXPORTS
 // =================================================
