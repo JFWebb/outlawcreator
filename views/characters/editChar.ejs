@@ -85,7 +85,7 @@
                     <label for="image">Image</label>
                     <input type="text" id="image" name="image" value="<%=character.image%>"/>
                 </div>
-                <div class="formQ">
+                <div class="formQ" id="influencecheck">
                     <label for="influence">Influence</label>
                     <% if (character.influence === true) { %>
                         <input type="checkbox" id="influence" name="influence" checked/>
@@ -101,5 +101,9 @@
             </form>
         </main>
     </div>
+    <footer>
+        <p>DISCLAIMER: This application is a personal project and is not affiliated with Dusk City Outlaws or Scratchpad Publishing. All information regarding character types, cartels, and character attributes belong to Dusk City Outlaws and Scratchpad Publishing.</p>
+        <p>App By Julie Webb | <a href="Github.com/JFWebb" target="blank" class="footerlink">Github.com/JFWebb</a> | <a href="https://twitter.com/juliefwebb" target="blank" class="footerlink">Twitter.com/JulieFWebb</a></p>
+    </footer>
 </body>
 </html>

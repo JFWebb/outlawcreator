@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
 
 // New
 router.get('/new-character', (req, res) => {
-    res.render('/characters/newChar.ejs');
+    res.render('characters/newChar.ejs');
 });
 
 // Destroy
