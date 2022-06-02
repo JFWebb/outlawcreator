@@ -1,3 +1,4 @@
+//Disclamer: I do not own the rights to Dusk City Outlaws. I am not affiliated with Dusk City Outlaws or Scratch Pad Publishing. All information regarding character types, cartels, and character attributes belong to Dusk City Outlaws and Scratchpad Publishing. This is a personal product designed for personal use. 
 module.exports = [{
     cartel:'Gravediggers',
     knowledge: 'The Church, cemeteries, funeral parlors, ward houses, medicine.'

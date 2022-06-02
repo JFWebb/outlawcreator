@@ -1,3 +1,4 @@
+//Disclamer: I do not own the rights to Dusk City Outlaws. I am not affiliated with Dusk City Outlaws or Scratch Pad Publishing. All information regarding character types, cartels, and character attributes belong to Dusk City Outlaws and Scratchpad Publishing. This is a personal product designed for personal use. 
 // =================================================
 // DEPENDCIES 
 // =================================================
@@ -12,7 +13,7 @@ const Character = require('../models/characters.js');
 // -- Homepage
 router.get('/', (req, res) => {
     res.render('index.ejs');
-})
+});
 
 // -- Google Auth Login Route
 router.get('/auth/google', passport.authenticate(
@@ -39,11 +40,11 @@ router.get('/logout', function(req, res){
 // LINK TO START BUTTON IF COME BACK
 router.get('/start', (req, res) => {
     if (Character.count === 0 ) {
-        res.redirect('/characters/new-character')
+        res.redirect('/characters/new-character');
     } else {
-        res.redirect('/characters/seed')
+        res.redirect('/characters/seed');
     }
-})
+});
 // =================================================
 // EXPORTS
 // =================================================

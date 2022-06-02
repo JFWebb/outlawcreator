@@ -1,3 +1,5 @@
+// Disclamer: I do not own the rights to Dusk City Outlaws. I am not affiliated with Dusk City Outlaws or Scratch Pad Publishing. All information regarding character types, cartels, and character attributes belong to Dusk City Outlaws and Scratchpad Publishing. This is a personal product designed for personal use. 
+
 // =================================================
 // DEPENDCIES & DATA VARIABLES
 // =================================================
@@ -8,11 +10,6 @@ const Schema = mongoose.Schema;
 // =================================================
 // DATA SCHEMAS
 // =================================================
-// // -- Speciality Skills
-// const sSkillsSchema = new Schema ({
-//     skillName: {type: String, required: false},
-//     skillPerc: {type: Number, required: false}
-// });
 
 // -- Individual Skills
 const iSkillsSchema = new Schema ({

@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 // =================================================
 // DATA SCHEMAS
 // =================================================
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     name: String,
     email: String,
     googleID: String

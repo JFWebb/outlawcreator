@@ -1,3 +1,5 @@
+// Disclamer: I do not own the rights to Dusk City Outlaws. I am not affiliated with Dusk City Outlaws or Scratch Pad Publishing. All information regarding character types, cartels, and character attributes belong to Dusk City Outlaws and Scratchpad Publishing. This is a personal product designed for personal use. 
+
 // =================================================
 // DEPENDCIES & DATA VARIABLES
 // =================================================
@@ -28,6 +30,7 @@ router.get('/seed', (req, res) => {
         });
     });
 });
+
 // Index
 // -- Home Page
 // If database empty, direct to seed. if not empty, direct to first character
@@ -41,7 +44,7 @@ router.get('/', (req, res) => {
                 res.redirect(`/characters/${foundCharacter._id}`);
             });
         };
-    })
+    });
 });
 
 // New
@@ -90,7 +93,7 @@ router.patch('/addskill/:id', (req, res) => {
         foundCharacter.iSkills.push(newSkill)
         foundCharacter.save();
         res.redirect(`/characters/${foundCharacter._id}`)
-    })
+    });
 });
 
 //-- delete skill
@@ -100,11 +103,11 @@ router.patch('/:charID/:skillID', (req, res) => {
         foundCharacter.iSkills.pull(req.params.skillID)
         foundCharacter.save();
         res.redirect(`/characters/${foundCharacter._id}`)
-    })
+    });
 });
 
 // Create
-// -- Create New Char
+// -- create New Char
 router.post('/', (req, res) => {
     if (req.body.influence === 'on') {
         req.body.influence = true;
@@ -117,7 +120,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// -- Create New Skill
+// -- create New Skill
 
 // Edit
 // -- edit character
@@ -128,21 +131,6 @@ router.get('/:id/edit', (req, res) => {
         });
     });
 });
-
-// Show
-// router.get('/:_id', (req, res) => {
-//     Character.findById(req.params._id, (err, foundCharacter) => {
-//         Character.find({}, (err, foundCharacters) => {
-//             cKnowledge.findOne({'cartel' : foundCharacter.cartel}, (err, foundCartel) => {
-//                 res.render('../views/characters/dashboard.ejs', {
-//                     characters: foundCharacters,
-//                     character: foundCharacter,
-//                     cartel: foundCartel,
-//                 });
-//             });
-//         });
-//     });
-// });
 
 router.get('/:_id', (req, res) => {
     Character.findById(req.params._id, (err, foundCharacter) => {
@@ -156,6 +144,7 @@ router.get('/:_id', (req, res) => {
         });
     });
 });
+
 // =================================================
 // EXPORTS
 // =================================================
