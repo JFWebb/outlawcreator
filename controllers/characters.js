@@ -18,19 +18,34 @@ app.use(express.urlencoded({extended:true}));
 // =================================================
 // MOUNT ROUTES
 // =================================================
+// Seed
+const characterSeed = require("../models/characterSeed.js");
+router.get("/seed", (req, res) => {
+    Character.create(characterSeed, (error, allProducts) => {
+        Character.findOne({}, (err, foundCharacter) => {
+            res.redirect(`/characters/${foundCharacter._id}`);
+        });
+    });
+});
 // Index
 // -- Home Page
-// ?? Have this redirect to first character
+// If database empty, direct to seed. if not empty, direct to first character
 router.get('/', (req, res) => {
-    Character.findOne({}, (err, foundCharacter) => {
-        res.redirect(`/characters/${foundCharacter._id}`);
-    });
-
+    Character.countDocuments({}, function (err, count)
+    {
+        if (count == 0 ) {
+            res.redirect('/characters/seed')
+        } else {
+            Character.findOne({}, (err, foundCharacter) => {
+                res.redirect(`/characters/${foundCharacter._id}`);
+            });
+        };
+    })
 });
 
 // New
 router.get('/new-character', (req, res) => {
-    res.render('characters/newChar.ejs');
+    res.render('/characters/newChar.ejs');
 });
 
 // Destroy
@@ -40,13 +55,6 @@ router.delete('/:id', (req, res) => {
         res.redirect('/characters/');
     });
 });
-
-// // -- delete skill
-// router.delete('/:charid/:skillid', (req, res) => {
-//     Skill.findByIdAndDelete(req.params.skillid, () => {
-//         res.redirect(`/characters/${req.params.charid}`)
-//     })
-// })
 
 // Update
 // -- update character whole doc
@@ -120,15 +128,6 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
-// -- add new skill
-// router.get('/characters/<%= character._id %>/addskill', (req, res) => {
-//     Character.findById(req.params.id, (err, foundCharacter) => {
-//         res.render('characters/addskill.ejs', {
-//             character: foundCharacter
-//         });
-//     })
-// });
-
 // Show
 router.get('/:_id', (req, res) => {
     Character.findById(req.params._id, (err, foundCharacter) => {
@@ -136,11 +135,11 @@ router.get('/:_id', (req, res) => {
             res.render('../views/characters/dashboard.ejs', {
                 characters: foundCharacters,
                 character: foundCharacter,
-                user: req.user
             });
         });
     });
 });
+
 // =================================================
 // EXPORTS
 // =================================================
