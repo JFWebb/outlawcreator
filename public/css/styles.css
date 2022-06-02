@@ -13,9 +13,13 @@
 }
 
 /* Baseline Styling */
+*{
+    margin:0;
+    padding: 0;
+}
+
 body {
-    display: flex;
-    flex-direction: column;
+    position: relative;
     margin: 0;
     height: 100vh;
     width: 100vw;
@@ -97,7 +101,7 @@ input[type=submit]:hover {
     height: 95vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-rows: 1fr auto;
     grid-column-gap: 40px;
     grid-row-gap: 0px;
     padding: 3em;
@@ -131,11 +135,14 @@ input[type=submit]:hover {
 }
 
 footer{
-    padding: 0;
+    grid-area: 2 / 1 / 3 / 4;
+    padding: 0.5em;
     margin: 0;
     font-size: 0.6em;
     text-align: center;
+    opacity: 70%;
 }
+
 /* Nested Containers */
 #charinfo {
     height: 80%;
@@ -328,6 +335,14 @@ footer > p > a:hover{
 
     .dashnav {
         grid-area: 3 / 1 / 4 / 2;
+    }
+
+    footer{
+        grid-area: 4 / 1 / 5 / 2;
+        padding: 0;
+        margin: 0;
+        font-size: 0.6em;
+        text-align: center;
     }
 
 }

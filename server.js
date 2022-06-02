@@ -53,8 +53,6 @@ app.use(passport.session());
 app.use('/characters', charController);
 app.use('/', indexRoutes);
 
-
-
 // =================================================
 // Port Listening?
 app.listen(PORT, () => {
