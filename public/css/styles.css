@@ -19,8 +19,8 @@ body {
     margin: 0;
     height: 100%;
     width: 100vw;
-    background: rgb(239,234,230);
-    background: linear-gradient(0deg, rgba(224,219,215,0.9) 0%, rgba(249,246,244,1) 100%);
+    background: rgb(239, 234, 230);
+    background: linear-gradient(0deg, rgba(224, 219, 215, 0.9) 0%, rgba(249, 246, 244, 1) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: var(--black);
@@ -28,13 +28,13 @@ body {
     font-size: 0.95em;
 }
 
-#formbody{
+#formbody {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#titlescreen{
+#titlescreen {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -54,7 +54,7 @@ a {
     width: 250px;
     border-radius: 5px;
     background-color: var(--red);
-    background: linear-gradient(350deg, rgba(153,23,34,1) 0%, rgba(171,27,40,1) 100%);
+    background: linear-gradient(350deg, rgba(153, 23, 34, 1) 0%, rgba(171, 27, 40, 1) 100%);
     text-align: center;
     font-family: 'Cinzel', serif;
     font-size: 1.25em;
@@ -64,25 +64,25 @@ a {
     text-shadow: 0px 0px 10px rgba(76, 12, 18, 0.8);
 }
 
-.linkbutton:hover{
+.linkbutton:hover {
     background: #8c0e03
 }
 
-input[type=submit]{
+input[type=submit] {
     margin: 1em 0em;
     padding: 0.5em;
     width: 250px;
     border-style: none;
     border-radius: 5px;
     background-color: var(--red);
-    background: linear-gradient(350deg, rgba(153,23,34,1) 0%, rgba(171,27,40,1) 100%);
+    background: linear-gradient(350deg, rgba(153, 23, 34, 1) 0%, rgba(171, 27, 40, 1) 100%);
     text-align: center;
     font-family: 'Cinzel', serif;
     font-size: 1.25em;
     text-decoration: none;
     letter-spacing: 1px;
     color: var(--white);
-    text-shadow: 0px 0px 10px rgba(	76, 12, 18, 0.8);
+    text-shadow: 0px 0px 10px rgba(76, 12, 18, 0.8);
 }
 
 input[type=submit]:hover {
@@ -102,13 +102,14 @@ input[type=submit]:hover {
 }
 
 /* Dashboard Children */
-.basics { 
+.basics {
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1em;
 }
+
 .expertise {
     grid-area: 1 / 2 / 2 / 3;
     display: flex;
@@ -116,6 +117,7 @@ input[type=submit]:hover {
     justify-content: space-between;
     padding: 1em;
 }
+
 .dashnav {
     grid-area: 1 / 3 / 2 / 4;
     display: flex;
@@ -131,23 +133,25 @@ input[type=submit]:hover {
     height: 80%;
 }
 
-#dasheditdelete{
+#dasheditdelete {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-#dasheditdelete > form{
+#dasheditdelete>form {
     margin: 0;
     padding: 0;
     width: 250px;
 }
-.expertisecontainer{
+
+.expertisecontainer {
     max-height: 270px;
     overflow: scroll;
 }
-#skillsList{
+
+#skillsList {
     margin: 0;
     padding: 0;
     list-style-type: disc;
@@ -156,20 +160,21 @@ input[type=submit]:hover {
     columns: 2;
     list-style-position: inside;
 }
-#skillsItem{
+
+#skillsItem {
     display: flex;
     flex-direction: row;
 
 }
 
-#addskillform{
+#addskillform {
     display: flex;
     flex-direction: column;
     align-items: center;
     align-self: flex-end;
 }
 
-#skillforminputs{
+#skillforminputs {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -187,29 +192,31 @@ input[type=submit]:hover {
     border-radius: 5px;
 }
 
-#charNav > nav > ul {
+#charNav>nav>ul {
     font-size: 1.2em;
 }
 
-#charNav > nav > ul > li :hover{
+#charNav>nav>ul>li :hover {
     color: #8c0e03;
 }
 
-#formbody>main>form{
+#formbody>main>form {
     display: flex;
     flex-direction: column;
 }
+
 /* Lowest Level Elements */
-.dashheader, h1 {
+.dashheader,
+h1 {
     padding: 0.25em 0em;
     margin: 0;
     font-size: 1.9em;
     font-family: 'Cinzel', serif;
     color: var(--blue);
-    text-shadow: 0px 0px 8px rgba(	0, 16, 24, 0.2);
+    text-shadow: 0px 0px 8px rgba(0, 16, 24, 0.2);
 }
 
-#face{
+#face {
     display: block;
     margin: auto;
     object-fit: cover;
@@ -222,9 +229,10 @@ input[type=submit]:hover {
     margin: 0;
 }
 
-#description{
+#description {
     display: inline-block;
     height: 35vh;
+    min-width: 100%;
     overflow: scroll;
     font-style: italic;
     clear: none;
@@ -232,21 +240,26 @@ input[type=submit]:hover {
     border-radius: 5px;
 }
 
-#skillforminputs > div {
+#skillforminputs>div {
     padding: 0.5em;
 }
 
 .formQ {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
 }
 
-#submitedits, #submitcharacter{
+#influencecheck{
+    display: flex;
+}
+
+#submitedits,
+#submitcharacter {
     align-self: center;
     margin: 1em;
 }
 
-#delete{
+#delete {
     margin: 0;
     padding: 0em 0.5em;
     width: auto;
@@ -256,11 +269,11 @@ input[type=submit]:hover {
     font-size: 0.7em;
 }
 
-#title{
+#title {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 5em;
     text-align: center;
-    background-image: linear-gradient(360deg, rgba(174,46,18,1) 0%, rgba(212,103,30,1) 42%, rgba(247,154,28,1) 100%);
+    background-image: linear-gradient(360deg, rgba(174, 46, 18, 1) 0%, rgba(212, 103, 30, 1) 42%, rgba(247, 154, 28, 1) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -270,19 +283,20 @@ input[type=submit]:hover {
 
 #titlebutton {
     background: var(--blue);
-    background: linear-gradient(350deg, rgba(36, 54, 99,1) 0%, rgba(0, 83, 123, 1) 100%);
+    background: linear-gradient(350deg, rgba(36, 54, 99, 1) 0%, rgba(0, 83, 123, 1) 100%);
 }
+
 
 @media (min-width: 320px) and (max-width: 1024px) {
 
     .parent {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
     }
 
-    .basics { 
+    .basics {
         grid-area: 1 / 1 / 2 / 2;
     }
 
@@ -293,5 +307,5 @@ input[type=submit]:hover {
     .dashnav {
         grid-area: 3 / 1 / 4 / 2;
     }
-   
+
 }

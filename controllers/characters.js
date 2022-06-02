@@ -61,7 +61,7 @@ router.patch('/:id', (req, res) => {
         foundCharacter.cartel = req.body.cartel
         foundCharacter.speciality = req.body.speciality
         foundCharacter.description = req.body.description
-        foundCharacter.quirks = req.body.quirks
+        foundCharacter.quirks = req.body.quirks.split(',');
         foundCharacter.iknowledge = req.body.iknowledge
         foundCharacter.image = req.body.image
         foundCharacter.influence = req.body.influence
@@ -102,6 +102,7 @@ router.post('/', (req, res) => {
     } else {
         req.body.influence = false;
     };
+    req.body.quirks = req.body.quirks.split(',');
     Character.create(req.body, (err, createdCharacter) => {
         res.redirect(`/characters/${createdCharacter._id}`);
     });
