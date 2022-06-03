@@ -11,7 +11,8 @@ const app = express();
 
 // -- models
 const Character = require('../models/characters.js');
-const cKnowledge = require('../models/cartelKnowledge.js')
+const cKnowledge = require('../models/cartelKnowledge.js');
+const sSkills = require('../models/specialtySkills');
 
 // =================================================
 // MOUNT MIDDLEWARE
@@ -107,7 +108,6 @@ router.patch('/:charID/:skillID', (req, res) => {
 });
 
 // Create
-// -- create New Char
 router.post('/', (req, res) => {
     if (req.body.influence === 'on') {
         req.body.influence = true;
@@ -120,10 +120,8 @@ router.post('/', (req, res) => {
     });
 });
 
-// -- create New Skill
 
 // Edit
-// -- edit character
 router.get('/:id/edit', (req, res) => {
     Character.findById(req.params.id, (err, foundCharacter) => {
         res.render('characters/editChar.ejs', {
@@ -132,14 +130,17 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
+//Show 
 router.get('/:_id', (req, res) => {
     Character.findById(req.params._id, (err, foundCharacter) => {
         let cartel = cKnowledge.find (item => item.cartel == foundCharacter.cartel);
+        let speciality = sSkills.find (item => item.specialty == foundCharacter.speciality);
         Character.find({}, (err, foundCharacters) => {
             res.render('../views/characters/dashboard.ejs', {
                 characters: foundCharacters,
                 character: foundCharacter,
                 cartel: cartel,
+                speciality: speciality
             });
         });
     });

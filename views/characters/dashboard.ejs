@@ -52,15 +52,19 @@
                     <h3  class="dashheader">Individual's Knowledge</h3>
                     <p><%= character.iKnowledge %></p>
                 </section>
-                <section class="expertisecontainer">
-                    <h3  class="dashheader">Speciality's Skills</h3>
-                    <ul>
-                        <li>Will be hard coded in someway</p>
+                <section class="expertisecontainer" id="skillcontainer">
+                    <h3  class="dashheader">Specialty's Skills</h3>
+                    <ul class="skillsList">
+                        <% for(let i = 0; i < speciality.skills.length; i++) { %>
+                            <li id="skillsItem">
+                                <%= speciality.skills[i].skillName %>......<%= speciality.skills[i].skillPerc %>%
+                            </li>
+                        <% } %>
                     </ul>
                 </section>
-                <section class="expertisecontainer">
+                <section class="expertisecontainer" id="skillcontainer">
                     <h3  class="dashheader">Individual's Skills</h3>
-                    <ul id="skillsList">
+                    <ul>
                         <% for(let i = 0; i < character.iSkills.length; i++) { %>
                             <li id="skillsItem">
                                 <%= character.iSkills[i].skillName %></a>......<%= character.iSkills[i].skillPerc %></a>%
